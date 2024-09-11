@@ -34,13 +34,13 @@
     <!-- Navbar -->
     <nav>
       <div class="brand">
-        <a href="/" class="poppins-bold">Restoran Pinggiran</a>
+        <a href="/" class="poppins-bold">RestoHunt</a>
       </div>
       <div class="menu">
-        <a href="">Home</a>
-        <a href="#">Favorite</a>
+        <a href=""><i class="fa-regular fa-house"></i> Home</a>
+        <a href="#"><i class="fa-regular fa-heart"></i> Favorite</a>
         <a href="https://aliefadam-portfolio.netlify.app/" target="_blank"
-          >About Us
+          ><i class="fa-regular fa-user"></i> About Us
         </a>
       </div>
     </nav>
@@ -50,9 +50,10 @@
     <header>
       <img src="./images/heros/hero-image_2.jpg" alt="" id="hero-section" />
       <div class="hero-content">
-        <h1>Restoran Pinggiran</h1>
+        <h1>Selamat Datang di RestoHunt</h1>
         <p>
-          Temukan Cita Rasa Lokal yang Menggugah Selera di Restoran Pinggiran
+          Temukan restoran terbaik di sekitarmu dengan mudah dan cepat!. Nikmati
+          pengalaman kuliner terbaik bersama kami.
         </p>
       </div>
     </header>
@@ -60,28 +61,56 @@
 
     <!-- Content -->
     <main>
-      <h2 class="poppins-semibold" tabindex="1">
-        Jelajahi Menu di Restoran Kami
-      </h2>
-      <div id="menu-container">
-        <div class="menu-item">
-          <div class="menu-image">
-            <img src="./images/heros/hero-image_3.jpg" alt="" />
-            <div class="label-city poppins-medium">Surabaya</div>
+      <h2 class="poppins-semibold" tabindex="1">Jelajahi Restoran Kami</h2>
+      <!-- Data Ditampilkan Dari Javascript -->
+      <div id="menu-container"></div>
+    </main>
+    <!-- End Content -->
+
+    <!-- Footer -->
+    <footer>
+      <span>Copyright &copy; 2024 - RestoHunt</span>
+    </footer>
+    <!-- End Footer -->
+
+    <!-- Overlay Detail Retauran -->
+    <div id="overlay-detail-restaurant">
+      <div class="detail-restaurant">
+        <div class="detail-restaurant-header">
+          <h3 class="poppins-medium">Detail Restoran</h3>
+          <button>
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <div class="detail-restaurant-body">
+          <div class="container-image">
+            <img
+              src="https://restaurant-api.dicoding.dev/images/medium/07"
+              alt=""
+            />
+
+            <p>Rating 5.0 <i class="fa-solid fa-star"></i></p>
           </div>
-          <div class="menu-detail">
-            <p>Rating 4.5</p>
-            <h3>Makanan Asik</h3>
+          <div class="container-desc">
+            <h2>Restauran Lost - Surabaya</h2>
             <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cumque,
-              inventore.
+              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
+              commodo ligula eget dolor. Aenean massa. Cum sociis natoque
+              penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+              Donec quam felis, ultricies nec, pellentesque eu, pretium quis,
+              sem. Nulla consequat massa quis enim. Donec pede justo, fringilla
+              vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut,
+              imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede
+              mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum
+              semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula,
+              porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem
+              ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus
+              viverra nulla ut metus varius laoreet.
             </p>
           </div>
         </div>
-        <div class="menu-item"></div>
-        <div class="menu-item"></div>
       </div>
-    </main>
-    <!-- End Content -->
+    </div>
   </body>
 </html>

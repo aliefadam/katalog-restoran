@@ -1,0 +1,312 @@
+@import url("poppins.css");
+
+$primary: #1e201e;
+$secondary: #3c3d37;
+$tertiary: #697565;
+$quarternary: #ecdfcc;
+$fontFamily: "Poppins", system-ui;
+
+* {
+  font-family: $fontFamily;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  line-height: 1;
+}
+
+body {
+  background-color: $quarternary;
+}
+
+// Navbar
+nav {
+  background-color: $primary;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  padding: 0 30px;
+  z-index: 20;
+
+  .brand a,
+  .menu a {
+    color: $quarternary;
+  }
+
+  .brand a {
+    font-size: 23px;
+  }
+
+  .menu {
+    display: flex;
+    gap: 20px;
+
+    a {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      font-weight: 500;
+      transition: 200ms;
+
+      &:hover {
+        transform: translateY(-1px);
+        color: lighten($quarternary, 5%);
+      }
+    }
+  }
+}
+// End Navbar
+
+// Hero Section
+header {
+  margin-top: 70px;
+  min-width: 1000px;
+  width: 100%;
+  position: relative;
+
+  img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+  }
+
+  .hero-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+
+    h1 {
+      color: $quarternary;
+      font-size: 50px;
+      text-shadow: 1px 1px 1px $primary;
+    }
+
+    p {
+      text-align: center;
+      color: $quarternary;
+      font-size: 18px;
+      text-shadow: 1px 1px 1px $primary;
+      line-height: 20px;
+    }
+  }
+}
+// End Hero Section
+
+// Content
+main {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h2 {
+    text-align: center;
+    color: $primary;
+  }
+
+  #menu-container {
+    width: 80%;
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+
+    .menu-item {
+      background-color: $secondary;
+      padding: 20px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+      transition: 300ms;
+
+      &:hover {
+        transform: scale(102%);
+      }
+
+      .menu-image {
+        position: relative;
+        height: 250px;
+
+        img {
+          border: 3px solid $quarternary;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 10px;
+        }
+
+        .label-city {
+          background-color: $quarternary;
+          position: absolute;
+          top: 20px;
+          left: 20px;
+          border-radius: 5px;
+          padding: 8px 10px;
+          font-size: 14px;
+          color: $primary;
+          box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+        }
+      }
+    }
+
+    .menu-detail {
+      color: $quarternary;
+      margin-top: 15px;
+
+      p:first-child {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        i {
+          font-size: 13px;
+          color: rgb(255, 157, 0);
+        }
+      }
+
+      h3 {
+        margin-top: 15px;
+      }
+
+      p.desc {
+        margin-top: 5px;
+        line-height: 20px;
+        font-size: 15px;
+      }
+
+      button {
+        width: 100%;
+        margin-top: 15px;
+        padding-block: 12px;
+        border-radius: 5px;
+        border: none;
+        cursor: pointer;
+        background-color: $primary;
+        color: $quarternary;
+        transition: 200ms;
+
+        &:hover {
+          background-color: darken($primary, 10%);
+        }
+      }
+    }
+  }
+}
+// End Content
+
+// Footer
+footer {
+  margin-top: 30px;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $primary;
+  color: $quarternary;
+}
+// End Footer
+
+// Overlay Detail Restauran
+#overlay-detail-restaurant {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 99;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .detail-restaurant {
+    width: 60%;
+    background-color: $quarternary;
+    border-radius: 15px;
+
+    .detail-restaurant-header {
+      padding: 20px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid $primary;
+
+      h3 {
+        color: $primary;
+      }
+
+      button {
+        background-color: transparent;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+        padding: 5px 7px;
+        border-radius: 5px;
+        transition: 200ms;
+
+        &:hover {
+          background-color: $primary;
+          color: $quarternary;
+        }
+      }
+    }
+
+    .detail-restaurant-body {
+      padding: 30px;
+      display: flex;
+      gap: 20px;
+
+      .container-image {
+        flex: 1;
+
+        img {
+          width: 100%;
+          height: 200px;
+          object-fit: cover;
+          border-radius: 5px;
+        }
+
+        p {
+          margin-top: 10px;
+          display: flex;
+          align-items: center;
+          gap: 5px;
+
+          i {
+            font-size: 13px;
+            color: rgb(255, 157, 0);
+          }
+        }
+      }
+
+      .container-desc {
+        flex: 2;
+
+        h2 {
+          color: $primary;
+          margin-bottom: 5px;
+        }
+
+        p {
+          line-height: 20px;
+          text-align: justify;
+        }
+      }
+    }
+  }
+}
+// End Overlay Detail Restauran
