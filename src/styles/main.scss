@@ -48,7 +48,7 @@ nav {
 
     a {
       display: flex;
-      gap: 10px;
+      gap: 5px;
       align-items: center;
       font-weight: 500;
       transition: 200ms;
@@ -159,6 +159,9 @@ main {
           font-size: 14px;
           color: $primary;
           box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+          display: flex;
+          gap: 5px;
+          align-items: center;
         }
       }
     }
@@ -229,7 +232,7 @@ footer {
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 99;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
 
@@ -237,13 +240,16 @@ footer {
     width: 60%;
     background-color: $quarternary;
     border-radius: 15px;
+    border: 2px solid $primary;
+    overflow: hidden;
 
     .detail-restaurant-header {
       padding: 20px 30px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid $primary;
+      background-color: darken($quarternary, 10%);
+      border-bottom: 2px solid $primary;
 
       h3 {
         color: $primary;
@@ -310,3 +316,28 @@ footer {
   }
 }
 // End Overlay Detail Restauran
+
+// Animation
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOutUp {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+// End Animation
