@@ -1,10 +1,6 @@
-@import url("poppins.css");
-
-$primary: #1e201e;
-$secondary: #3c3d37;
-$tertiary: #697565;
-$quarternary: #ecdfcc;
-$fontFamily: "Poppins", system-ui;
+@import "poppins";
+@import "mixin";
+@import "variables";
 
 * {
   font-family: $fontFamily;
@@ -15,23 +11,42 @@ $fontFamily: "Poppins", system-ui;
   line-height: 1;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
+  width: 100%;
+  overflow-x: hidden;
   background-color: $quarternary;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 10px;
+  padding: 15px;
+  background-color: white;
+  z-index: 99999;
+  color: $primary;
+  font-weight: 600;
+  background-color: darken($color: $quarternary, $amount: 20%);
+  border-radius: 5px;
+  transition: 200ms;
+}
+
+.skip-link:focus {
+  top: 10px;
 }
 
 // Navbar
 nav {
   background-color: $primary;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
+  @include flex-container(space-between, center);
+  @include not-static-position(fixed, 0, 0, 0, 0, 20);
   width: 100%;
   height: 70px;
-  padding: 0 30px;
-  z-index: 20;
+  padding: 0 20px;
 
   .brand a,
   .menu a {
@@ -39,17 +54,20 @@ nav {
   }
 
   .brand a {
-    font-size: 23px;
+    font-size: 20px;
   }
 
   .menu {
-    display: flex;
-    gap: 20px;
+    display: none;
+    width: 60%;
+    height: 100vh;
+    padding: 30px 20px;
+    background-color: rgba($color: #000000, $alpha: 0.9);
+    @include not-static-position($position: fixed, $top: 0, $right: 0);
+    transform: translateX(100%);
 
     a {
-      display: flex;
-      gap: 5px;
-      align-items: center;
+      @include flex-container($align-items: center, $gap: 15px);
       font-weight: 500;
       transition: 200ms;
 
@@ -59,48 +77,64 @@ nav {
       }
     }
   }
+
+  .hamburger-menu {
+    background-color: transparent;
+    border: none;
+
+    i {
+      color: $quarternary;
+      font-size: 20px;
+    }
+  }
 }
 // End Navbar
 
 // Hero Section
 header {
   margin-top: 70px;
-  min-width: 1000px;
+  // min-width: 1000px;
   width: 100%;
   position: relative;
 
   img {
     width: 100%;
-    height: 500px;
+    height: 300px;
     object-fit: cover;
   }
 
   .hero-content {
-    position: absolute;
-    top: 0;
-    left: 0;
+    @include flex-container(
+      $justify-content: center,
+      $align-items: center,
+      $gap: 5px,
+      $direction: column
+    );
+    @include not-static-position(
+      $position: absolute,
+      $top: 0,
+      $left: 0,
+      $z-index: 10
+    );
+
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.6);
-    z-index: 10;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 12px;
 
     h1 {
+      text-align: center;
       color: $quarternary;
-      font-size: 50px;
+      font-size: 22px;
       text-shadow: 1px 1px 1px $primary;
     }
 
     p {
+      width: 90%;
       text-align: center;
       color: $quarternary;
-      font-size: 18px;
+      font-size: 12px;
       text-shadow: 1px 1px 1px $primary;
-      line-height: 20px;
+      line-height: 15px;
     }
   }
 }
@@ -109,21 +143,18 @@ header {
 // Content
 main {
   padding: 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  @include flex-container($align-items: center, $direction: column);
 
   h2 {
     text-align: center;
     color: $primary;
+    font-size: 20px;
   }
 
   #menu-container {
-    width: 80%;
+    width: 90%;
     margin-top: 40px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    @include grid-container($column-count: 1, $gap: 30px);
 
     .menu-item {
       background-color: $secondary;
@@ -151,17 +182,17 @@ main {
 
         .label-city {
           background-color: $quarternary;
-          position: absolute;
-          top: 20px;
-          left: 20px;
+          @include flex-container($align-items: center, $gap: 5px);
+          @include not-static-position(
+            $position: absolute,
+            $top: 20px,
+            $left: 20px
+          );
           border-radius: 5px;
           padding: 8px 10px;
           font-size: 14px;
           color: $primary;
           box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
-          display: flex;
-          gap: 5px;
-          align-items: center;
         }
       }
     }
@@ -171,9 +202,7 @@ main {
       margin-top: 15px;
 
       p:first-child {
-        display: flex;
-        align-items: center;
-        gap: 5px;
+        @include flex-container($align-items: center, $gap: 5px);
         i {
           font-size: 13px;
           color: rgb(255, 157, 0);
@@ -215,9 +244,7 @@ footer {
   margin-top: 30px;
   width: 100%;
   height: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex-container($justify-content: center, $align-items: center);
   background-color: $primary;
   color: $quarternary;
 }
@@ -225,29 +252,32 @@ footer {
 
 // Overlay Detail Restauran
 #overlay-detail-restaurant {
-  position: fixed;
-  top: 0;
-  left: 0;
+  @include not-static-position(
+    $position: fixed,
+    $top: 0,
+    $left: 0,
+    $z-index: 99
+  );
   width: 100%;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.7);
-  z-index: 99;
   display: none;
   justify-content: center;
   align-items: center;
 
   .detail-restaurant {
-    width: 60%;
+    width: 90%;
     background-color: $quarternary;
     border-radius: 15px;
     border: 2px solid $primary;
     overflow: hidden;
 
     .detail-restaurant-header {
-      padding: 20px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      padding: 15px 20px;
+      @include flex-container(
+        $justify-content: space-between,
+        $align-items: center
+      );
       background-color: darken($quarternary, 10%);
       border-bottom: 2px solid $primary;
 
@@ -272,11 +302,11 @@ footer {
     }
 
     .detail-restaurant-body {
-      padding: 30px;
-      display: flex;
-      gap: 20px;
+      padding: 15px 20px;
+      @include flex-container($gap: 10px, $direction: column);
 
       .container-image {
+        width: 100%;
         flex: 1;
 
         img {
@@ -288,9 +318,7 @@ footer {
 
         p {
           margin-top: 10px;
-          display: flex;
-          align-items: center;
-          gap: 5px;
+          @include flex-container($align-items: center, $gap: 5px);
 
           i {
             font-size: 13px;
@@ -308,14 +336,17 @@ footer {
         }
 
         p {
+          font-size: 15px;
           line-height: 20px;
-          text-align: justify;
         }
       }
     }
   }
 }
 // End Overlay Detail Restauran
+
+@import "responsive/tablet";
+@import "responsive/desktop";
 
 // Animation
 @keyframes fadeInDown {
@@ -338,6 +369,24 @@ footer {
   to {
     opacity: 0;
     transform: translateY(-10px);
+  }
+}
+
+@keyframes slideLeft {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideRight {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
   }
 }
 // End Animation

@@ -4,10 +4,13 @@ import "../styles/main.scss";
 const menuContainer = document.getElementById("menu-container");
 const overlay = document.getElementById("overlay-detail-restaurant");
 const detailRestoran = document.getElementById("detail-restaurant");
+const hamburgerMenu = document.querySelector(".hamburger-menu");
+const navMenu = document.querySelector("nav .menu");
 
 document.addEventListener("click", ({ target }) => {
   if (target.classList.contains("btn-lihat-detail")) {
     openShowDetail(target.getAttribute("data-restaurant-id"));
+    return;
   }
 
   if (
@@ -16,8 +19,20 @@ document.addEventListener("click", ({ target }) => {
     target.classList.contains("btn-close-icon")
   ) {
     closeShowDetail();
+    return;
+  }
+
+  if (
+    !target.classList.contains("menu") &&
+    !target.classList.contains("hamburger-menu") &&
+    !target.classList.contains("hamburger-menu-icon")
+  ) {
+    closeDrawer();
+    return;
   }
 });
+
+hamburgerMenu.addEventListener("click", () => openDrawer());
 
 const getData = async () => {
   const res = await fetch("/data/DATA.json");
@@ -26,7 +41,7 @@ const getData = async () => {
 };
 
 const show = () => {
-  fetch("/data/DATA.json")
+  fetch("./data/DATA.json")
     .then((res) => res.json())
     .then((res) => {
       const restaurants = res.restaurants;
@@ -84,6 +99,30 @@ const closeShowDetail = (e) => {
     overlay.style.display = "none";
     detailRestoran.style.animation = "fadeInDown 500ms";
   }, 200);
+};
+
+let isDrawerOpen = false;
+
+const openDrawer = () => {
+  navMenu.style.display = "flex";
+  navMenu.style.flexDirection = "column";
+  navMenu.style.gap = "25px";
+
+  navMenu.style.animation = "slideLeft 200ms alternate";
+  navMenu.style.transform = "translateX(0)";
+  isDrawerOpen = !isDrawerOpen;
+};
+
+const closeDrawer = () => {
+  if (isDrawerOpen) {
+    navMenu.style.animation = "slideRight 200ms alternate";
+    navMenu.style.transform = "translateX(100%)";
+
+    setTimeout(() => {
+      navMenu.style.display = "none";
+      isDrawerOpen = !isDrawerOpen;
+    }, 200);
+  }
 };
 
 show();

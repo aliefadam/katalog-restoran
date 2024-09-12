@@ -1,0 +1,40 @@
+@mixin poppins-variant($weight, $style) {
+  font-family: "Poppins", system-ui;
+  font-weight: $weight;
+  font-style: $style;
+}
+
+@mixin flex-container(
+  $justify-content: flex-start,
+  $align-items: flex-start,
+  $gap: 0,
+  $direction: row
+) {
+  display: flex;
+  justify-content: $justify-content;
+  align-items: $align-items;
+  gap: $gap;
+  flex-direction: $direction;
+}
+
+@mixin grid-container($column-count, $gap) {
+  display: grid;
+  grid-template-columns: repeat($column-count, 1fr);
+  gap: $gap;
+}
+
+@mixin not-static-position(
+  $position: relative,
+  $top: auto,
+  $right: auto,
+  $bottom: auto,
+  $left: auto,
+  $z-index: 1
+) {
+  position: $position;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+  z-index: $z-index;
+}
