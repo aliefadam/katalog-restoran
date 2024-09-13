@@ -20,6 +20,7 @@
         @include flex-container($align-items: center, $gap: 7px);
         font-weight: 500;
         transition: 200ms;
+        height: 45px;
 
         &:hover {
           transform: translateY(-1px);
@@ -76,7 +77,7 @@
       width: 90%;
 
       .detail-restaurant-header {
-        padding: 20px 30px;
+        padding: 15px 30px;
       }
 
       .detail-restaurant-body {
@@ -84,9 +85,13 @@
         @include flex-container($gap: 20px);
 
         .container-desc {
+          h2 {
+            font-size: 20px;
+          }
           p {
             line-height: 20px;
             text-align: justify;
+            font-size: 16px;
           }
         }
       }

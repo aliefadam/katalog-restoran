@@ -35,7 +35,7 @@ document.addEventListener("click", ({ target }) => {
 hamburgerMenu.addEventListener("click", () => openDrawer());
 
 const getData = async () => {
-  const res = await fetch("/data/DATA.json");
+  const res = await fetch("./data/DATA.json");
   const data = await res.json();
   return data.restaurants;
 };
@@ -106,7 +106,7 @@ let isDrawerOpen = false;
 const openDrawer = () => {
   navMenu.style.display = "flex";
   navMenu.style.flexDirection = "column";
-  navMenu.style.gap = "25px";
+  navMenu.style.gap = "10px";
 
   navMenu.style.animation = "slideLeft 200ms alternate";
   navMenu.style.transform = "translateX(0)";
